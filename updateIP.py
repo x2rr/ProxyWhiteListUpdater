@@ -7,11 +7,11 @@ import urllib.parse
 import os
 
 
-# JULIANG_KEY = ''  # 填入巨量的 Key
-# JULIANG_TRADE_NO = ''  # 填入巨量的 Trade No
+# JULIANG_KEY = ''  # 填入巨量的API密钥，点击设置授权信息按钮查看，获取地址 https://www.juliangip.com/users/product/time
+# JULIANG_TRADE_NO = ''  # 填入巨量的业务编号
 # XK_APIKEY = ''  # 填入星空的 API Key
 # XK_SIGN = ''  # 填入星空的 Sign
-# XIEQU_UID = ''  # 填入携趣的 UID
+# XIEQU_UID = ''  # 填入携趣的 UID，获取地址 https://www.xiequ.cn/redirect.aspx?act=MyIpWhiteList.aspx
 # XIEQU_UKEY = ''  # 填入携趣的 UKEY
 # YYY_UID = ''  # 填入优亦云的用户套餐ID
 # YYY_TOKEN = ''  # 填入优亦云的TOKEN
