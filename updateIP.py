@@ -15,6 +15,7 @@ import os
 # XIEQU_UKEY = ''  # 填入携趣的 UKEY
 # YYY_UID = ''  # 填入优亦云的用户套餐ID
 # YYY_TOKEN = ''  # 填入优亦云的TOKEN
+# APPKEY_51DL= ''  # 填入51代理的密钥
 # 巨量
 JULIANG_KEY = ''
 JULIANG_TRADE_NO = '' 
@@ -27,6 +28,8 @@ XIEQU_UKEY = ''
 # 优亦云
 YYY_UID = ''
 YYY_TOKEN = ''
+# 51代理
+APPKEY_51DL = ''
 
 # 青龙环境变量（若上面不填写，则读取青龙环境变量）
 JULIANG_KEY = JULIANG_KEY if JULIANG_KEY else os.getenv("JULIANG_KEY")
@@ -37,7 +40,7 @@ XIEQU_UID = XIEQU_UID if XIEQU_UID else os.getenv("XIEQU_UID")
 XIEQU_UKEY = XIEQU_UKEY if XIEQU_UKEY else os.getenv("XIEQU_UKEY")
 YYY_UID = YYY_UID if YYY_UID else os.getenv("YYY_UID")
 YYY_TOKEN = YYY_TOKEN if YYY_TOKEN else os.getenv("YYY_TOKEN")
-
+APPKEY_51DL =  APPKEY_51DL if APPKEY_51DL else os.getenv("APPKEY_51DL")
 
 
 
@@ -108,6 +111,12 @@ def update_yyy_white_list(ip, YYY_UID, YYY_TOKEN):
         else:
             return '优亦云白名单ip未变化'
 
+def update_51dl_white_list(ip, APPKEY_51DL):
+    if APPKEY_51DL:
+        url = f'http://bapi.51daili.com/white-ip/add?appkey={APPKEY_51DL}&isdel=1&ips={ip}'
+        response = requests.get(url)
+        return response.text
+
 
 def main():
     ip = get_current_ip()
@@ -117,6 +126,7 @@ def main():
     print('更新星空白名单结果：', update_xk_white_list(ip, XK_APIKEY, XK_SIGN))
     print('更新携趣白名单结果：', update_xiequ_white_list(ip, XIEQU_UID, XIEQU_UKEY))
     print('更新优亦云白名单结果：', update_yyy_white_list(ip, YYY_UID, YYY_TOKEN))
+    print('更新51代理白名单结果：',update_51dl_white_list(ip,APPKEY_51DL))
 
 if __name__ == "__main__":
     main()
